@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.lang.annotation.Documented;
-
 @Entity
 @Table(name = "personagem")
 @AllArgsConstructor
@@ -16,7 +14,7 @@ import java.lang.annotation.Documented;
 public class PersonagemModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String nomePessoa;
