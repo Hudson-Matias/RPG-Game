@@ -37,4 +37,18 @@ public class PersonagemService {
         personagemRepository.deleteById(id);
         return ResponseEntity.ok("Personagem deletado com sucesso");
     }
+
+    public ResponseEntity<PersonagemModel> updatePersonagemById(@RequestBody PersonagemModel updatePersonagem, @PathVariable Long id){
+        return personagemRepository.findById(id).map(personagemModel -> {
+            personagemModel.setNomePessoa(updatePersonagem.getNomePessoa());
+            personagemModel.setNomeAventureiro(updatePersonagem.getNomeAventureiro());
+            personagemModel.setNivel(updatePersonagem.getNivel());
+            personagemModel.setClassesPersonagem(updatePersonagem.getClassesPersonagem());
+            personagemModel.setForca(updatePersonagem.getForca());
+            personagemModel.setDefesa(updatePersonagem.getDefesa());
+
+            PersonagemModel updatedPersonagem = personagemRepository.save(personagemModel);
+            return ResponseEntity.ok(updatedPersonagem);
+        }).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
+    }
 }

@@ -37,4 +37,16 @@ public class ItemMagicoService {
         itemMagicoRepository.deleteById(id);
         return ResponseEntity.ok("Deletado com Sucesso");
     }
+
+    public ResponseEntity<ItemMagicoModel> updateItemMagicoById(@RequestBody ItemMagicoModel updateItemMagico, @PathVariable Long id){
+        return itemMagicoRepository.findById(id).map(itemMagicoModel -> {
+            itemMagicoModel.setNomeItem(updateItemMagico.getNomeItem());
+            itemMagicoModel.setTipoArma(updateItemMagico.getTipoArma());
+            itemMagicoModel.setDefesa(updateItemMagico.getDefesa());
+            itemMagicoModel.setForca(updateItemMagico.getForca());
+
+            ItemMagicoModel updatedItemMagico = itemMagicoRepository.save(itemMagicoModel);
+            return ResponseEntity.ok(updatedItemMagico);
+        }).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
+    }
 }

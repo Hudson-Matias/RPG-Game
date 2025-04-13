@@ -40,4 +40,10 @@ public class ItemMagicoController {
     public ResponseEntity<?> deleteItemMagicoById(@PathVariable Long id){
         return itemMagicoService.deleteItemMagicoById(id);
     }
+
+    @Operation(summary = "Atualizar item mágico por ID")
+    @PutMapping("/update-item-magico-por-id/{id}")
+    public ResponseEntity<ItemMagicoModel> updateItemMagicoById(@RequestBody ItemMagicoModel itemMagicoModel, @PathVariable Long id){
+        return itemMagicoService.updateItemMagicoById(itemMagicoModel, id);
+    }
 }

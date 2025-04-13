@@ -40,4 +40,9 @@ public class PersonagemController {
         return personagemService.deletePersonagemById(id);
     }
 
+    @Operation(summary = "Atualizar o personagem por ID")
+    @PutMapping("/update-personagem-por-id/{id}")
+    public ResponseEntity<PersonagemModel> updatePersonagemById(@RequestBody PersonagemModel personagemModel, @PathVariable Long id){
+        return personagemService.updatePersonagemById(personagemModel, id);
+    }
 }
