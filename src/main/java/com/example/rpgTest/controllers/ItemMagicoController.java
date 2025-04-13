@@ -52,4 +52,11 @@ public class ItemMagicoController {
     public ResponseEntity<?> setItemPersonagem(@PathVariable Long personagemId, @RequestBody ItemMagicoModel itemMagicoModel){
         return itemMagicoService.adicionarItemAoPersonagem(personagemId, itemMagicoModel);
     }
+
+    @Operation(summary = "Buscar o amuleto de um personagem")
+    @GetMapping("/personagem/{personagemId}/amuleto")
+    public ResponseEntity<?> getAmuleto(@PathVariable Long personagemId) {
+        return itemMagicoService.getAmuletoDoPersonagem(personagemId);
+    }
+
 }

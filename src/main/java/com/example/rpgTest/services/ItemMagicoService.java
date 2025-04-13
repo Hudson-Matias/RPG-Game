@@ -1,5 +1,6 @@
 package com.example.rpgTest.services;
 
+import com.example.rpgTest.enums.TipoArma;
 import com.example.rpgTest.model.ItemMagicoModel;
 import com.example.rpgTest.model.PersonagemModel;
 import com.example.rpgTest.repository.ItemMagicoRepository;
@@ -87,4 +88,15 @@ public class ItemMagicoService {
         itemMagicoRepository.save(item);
         return ResponseEntity.status(HttpStatus.CREATED).body(item);
     }
+
+    public ResponseEntity<?> getAmuletoDoPersonagem(Long personagemId) {
+        List<ItemMagicoModel> amuletos = itemMagicoRepository.findByPersonagemIdAndTipoArma(personagemId, TipoArma.AMULETO);
+
+        if (amuletos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Personagem não possui amuleto.");
+        }
+
+        return ResponseEntity.ok(amuletos.get(0)); // Considerando só um amuleto permitido
+    }
+
 }

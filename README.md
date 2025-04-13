@@ -1,3 +1,8 @@
+# Explicando o CRUD
+![img.png](img.png)
+Todas as rotas feitas em swagger:
+````http://localhost:8080/swagger-ui/index.html#/````
+
 # Atividade CRUD (Problemática)
 Data Limite Entrega: 23:59 13/Abril/2025.
 Segue abaixo o detalhamento sobre a Atividade Prática de CRUD.
