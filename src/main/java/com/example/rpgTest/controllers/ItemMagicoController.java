@@ -46,4 +46,10 @@ public class ItemMagicoController {
     public ResponseEntity<ItemMagicoModel> updateItemMagicoById(@RequestBody ItemMagicoModel itemMagicoModel, @PathVariable Long id){
         return itemMagicoService.updateItemMagicoById(itemMagicoModel, id);
     }
+
+    @Operation(summary = "Adicionar item mágico a um personagem")
+    @PostMapping("/personagem/{personagemId}/adicionar")
+    public ResponseEntity<?> setItemPersonagem(@PathVariable Long personagemId, @RequestBody ItemMagicoModel itemMagicoModel){
+        return itemMagicoService.adicionarItemAoPersonagem(personagemId, itemMagicoModel);
+    }
 }
